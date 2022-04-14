@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
+import java.time.Instant;
 
 @Entity
 @Getter
@@ -22,12 +23,12 @@ public class User {
 
     private String email;
 
-    @CreatedDate
     private Long createdAt;
 
     public User(String username, String password, String email) {
         this.username = username;
         this.password = password;
         this.email = email;
+        this.createdAt = Instant.now().getEpochSecond();
     }
 }
